@@ -10,7 +10,8 @@ class DisableMigrations(object):
         return True
 
     def __getitem__(self, item):
-        return "notmigrations"
+        if DJANGO_VERSION < (1, 11):
+            return "notmigrations"
 
 
 class Command(TestCommand):
